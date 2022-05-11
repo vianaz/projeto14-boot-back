@@ -1,10 +1,11 @@
-import express from "express";
+import express, { json } from "express";
 
 import authenticationRouter from "./routes/authenticationRouter.js";
 import productsRouter from "./routes/productsRouter.js";
 
 const app = express();
 
+app.use(json());
 app.use(authenticationRouter); // sign in, sign up, logout
 app.use(productsRouter);
 
