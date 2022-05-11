@@ -1,6 +1,6 @@
 import db from "../db.js";
 
-export default async function products(req, res) {
+export default async function getProducts(req, res) {
 	const productsArray = await db.collection("products").find({}).toArray();
 
 	if (!productsArray)

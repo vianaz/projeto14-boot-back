@@ -1,11 +1,13 @@
-import express from 'express';
+import express from "express";
 
-import authenticationRouter from './routes/authenticationRouter.js';
-import productsRouter from './routes/productsRouter.js';
+import authenticationRouter from "./routes/authenticationRouter.js";
+import productsRouter from "./routes/productsRouter.js";
 
-const router = express.Router();
+const app = express();
 
-router.use(authenticationRouter); // sign in, sign up, logout
-router.use(productsRouter);
+app.use(authenticationRouter); // sign in, sign up, logout
+app.use(productsRouter);
 
-export default router;
+app.listen(process.env.PORT, () => {
+	console.log(`Server running at http://localhost:${process.env.PORT}`);
+});
