@@ -1,12 +1,13 @@
-import express from 'express';
-import dotenv from 'dotenv';
+import express from "express";
 
-import authenticationRouter from './routes/authenticationRouter.js';
+import authenticationRouter from "./routes/authenticationRouter.js";
+import productsRouter from "./routes/productsRouter.js";
 
-dotenv.config()
+const app = express();
 
-const router = express.Router();
+app.use(authenticationRouter); // sign in, sign up, logout
+app.use(productsRouter);
 
-router.use(authenticationRouter); // sign in, sign up, logout
-
-export default router;
+app.listen(process.env.PORT, () => {
+	console.log(`Server running at http://localhost:${process.env.PORT}`);
+});
