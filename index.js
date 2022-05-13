@@ -1,14 +1,19 @@
-import express, { json } from "express";
+import express, { json } from 'express'; // server
+import cors from 'cors';
+import dotenv from 'dotenv'; // environment variables
 
-import authenticationRouter from "./routes/authenticationRouter.js";
-import productsRouter from "./routes/productsRouter.js";
+import router from './routes/router.js';
 
 const app = express();
 
-app.use(json());
-app.use(authenticationRouter); // sign in, sign up, logout
-app.use(productsRouter);
+dotenv.config();
 
-app.listen(process.env.PORT, () => {
-	console.log(`Server running at http://localhost:${process.env.PORT}`);
+app.use(json());
+app.use(cors());
+app.use(router);
+
+const port = process.env.PORT || 5000; // establishing the port -> production or development
+
+app.listen(port, () => {
+	console.log(`Server running on port: ${port}`);
 });
