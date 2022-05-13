@@ -1,4 +1,4 @@
-import joi from 'joi';
+/* import joi from 'joi';
 import bcrypt from 'bcrypt';
 import { v4 as uuid } from 'uuid';
 
@@ -89,4 +89,4 @@ export async function signIn(req, res) {
 // logout
 export async function logOut(req, res) {
     res.sendStatus(201);
-}
+} */

@@ -1,4 +1,4 @@
-import db from "../db.js";
+/* import db from "../server/MongoClient.js";
 
 export default async function getProducts(req, res) {
 	try {
@@ -8,4 +8,4 @@ export default async function getProducts(req, res) {
 		console.log(error);
 		res.status(400).send(error);
 	}
-}
+} */

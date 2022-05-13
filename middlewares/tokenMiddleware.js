@@ -1,4 +1,4 @@
-import db from "./../db.js";
+/* import db from "./../db.js";
 
 export default async function validateToken(req, res, next) {
 	const { authorization } = req.headers;
@@ -18,4 +18,4 @@ export default async function validateToken(req, res, next) {
 	} catch (error) {
 		res.status(500).send("Error checking token.");
 	}
-}
+} */
