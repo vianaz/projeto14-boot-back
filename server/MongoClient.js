@@ -1,6 +1,6 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
-import dotenv from "dotenv";
-import chalk from "chalk";
+import { MongoClient, ServerApiVersion } from 'mongodb';
+import dotenv from 'dotenv';
+import chalk from 'chalk';
 
 import { ERROR, DB_INFO } from './models/blueprints/chalk.js';
 
