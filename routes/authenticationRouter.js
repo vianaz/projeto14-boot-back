@@ -1,11 +1,19 @@
-/* import express from 'express';
+import express from 'express';
+import dotenv from 'dotenv';
 
-import { signUp, signIn, logOut } from '../controllers/authenticationController.js';
+import validateUser from './../middleware/validateUser.js';
+import isUserUnique from './../middleware/isUserUnique.js';
+import userExists from './../middleware/userExists.js';
+import validateSignin from './../middleware/validateSignin.js';
+import isUserOnline from './../middleware/isUserOnline.js';
+
+import { signUp, signIn } from './../controllers/authenticationController.js';
+
+dotenv.config();
 
 const authenticationRouter = express.Router();
 
-authenticationRouter.post('/signUp', signUp);
-authenticationRouter.post('/signIn', signIn);
-authenticationRouter.post('/logOut', logOut);
+authenticationRouter.post(process.env.SIGNUP, validateUser, isUserUnique, signUp);
+authenticationRouter.post(process.env.SIGNIN, userExists, validateSignin, isUserOnline, signIn);
 
-export default authenticationRouter; */
+export default authenticationRouter;

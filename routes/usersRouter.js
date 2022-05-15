@@ -1,0 +1,1 @@
+/* authenticationRouter.post('/logOut', logOut); */
