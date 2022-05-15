@@ -22,7 +22,7 @@ export async function signUp(req, res) {
             password: password,
             singup_date: new Date()
         });
-        console.log(chalk.blue(`${DB_INFO} user ${chalk.bold(email)} created`));
+        console.log(chalk.blue(`${DB_INFO} User ${chalk.bold(email)} created`));
         res.sendStatus(201);
     } catch (error) {
         console.log(chalk.red(`${ERROR} ${error}`));
