@@ -1,92 +1,62 @@
-/* import joi from 'joi';
 import bcrypt from 'bcrypt';
+import chalk from 'chalk';
 import { v4 as uuid } from 'uuid';
+import { stripHtml } from 'string-strip-html';
+import dotenv from 'dotenv';
 
-// validation -> joi
-const signUpSchema = joi.object({
-    username: joi.string()
-        .alphanum()
-        .min(3)
-        .max(50)
-        .required(),
-    password: joi.string()
-        .required(),
-    repeatPassword: joi.ref('password'),
-    email: joi.string()
-        .email()
-        .required()
-})
+import { ERROR, DB_INFO } from '../models/blueprints/chalk.js';
+import database from '../server/mongoClient.js';
 
-const signInSchema = joi.object({
-    password: joi.string()
-        .required(),
-    email: joi.string()
-        .email()
-        .required()
-})
+dotenv.config();
 
-// register
 export async function signUp(req, res) {
 
-    const { username, email, password, confirmPassword } = req.body;
-    const validation = signUpSchema.validate({ username, email, password, confirmPassword });
-
-    // error
-    if (validation.error) {
-        return res.status(422).send(error.details.map(detail => detail.message)); // unprocessable entity
-    }
-
-    const SALT = 10;
-    const hashPassword = bcrypt.hashSync(password, SALT); // encrypting password
+    const name = stripHtml(req.body.name).result.trim();
+    const email = stripHtml(req.body.email).result.trim();
+    const password = bcrypt.hashSync(req.body.password, process.env.SALT);
 
     try {
-        const checkUser = await dbLeitura.collection('users').findOne({ email });
-        if (checkUser) {
-            console.log("Error! User already exist")
-            return res.sendStatus(401);
-        }
-
-        await dbLeitura.collection('users').insertOne({ username, email, password: hashPassword }); // insert user in database
-        console.log("User created successfully");
+        await database.collection('accounts').insertOne({
+            name: name,
+            email: email,
+            password: password,
+            singup_date: new Date()
+        });
+        console.log(chalk.blue(`${DB_INFO} user ${chalk.bold(email)} created`));
         res.sendStatus(201);
-    }
-    catch (error) {
-        console.log("Error creating new user");
-        console.log(error);
-        return res.sendStatus(500);
+    } catch (error) {
+        console.log(chalk.red(`${ERROR} ${error}`));
+        res.status(500).send({
+            message: 'Internal error creating user',
+            detail: error,
+        });
     }
 }
 
-// login  ~~~~~~~~~~~~~~MELHORAR LOGIN~~~~~~~~~~~~~~
-export async function signIn(req, res) {
+export async function signIn(_req, res) {
 
-    const { email, password } = req.body;
-    const validation = signInSchema.validate({ email, password });
-
-    // error
-    if (validation.error) {
-        return res.sendStatus(401);
-    }
+    const email = res.locals.email;
+    const user = res.locals.user;
 
     try {
-        const user = await dbLeitura.collection('users').findOne({ email });
-        if (user && bcrypt.compareSync(password, user.password)) {
-            const token = uuid();
-
-            await dbLeitura.collection('marketplace').insertOne({
-                userId: user._id,
-                token
-            })
-            res.send(token);
-        }
-        else { res.sendStatus(401); }
-    }
-    catch {
-        res.sendStatus(401);
+        const token = uuid();
+        await database.collection('sessions').insertOne({
+            email: user.email,
+            active: false,
+            token: token,
+            last_login: null,
+        });
+        console.log(chalk.blue(`${DB_INFO} user ${chalk.bold(email)} logged in`));
+        res.send({
+            name: user.name,
+            email: user.email,
+            token: token,
+        });
+    } catch (error) {
+        console.log(chalk.red(`${ERROR} ${error}`));
+        res.status(500).send({
+            message: 'Internal error while logging in user',
+            detail: error,
+        });
     }
 }
-
-// logout
-export async function logOut(req, res) {
-    res.sendStatus(201);
-} */

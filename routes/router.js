@@ -6,7 +6,7 @@ import usersRouter from './usersRouter.js'
 
 const router = express.Router();
 
-router.use(authenticationRouter); // signin, signup, signout
+router.use(authenticationRouter); // signin, signup
 router.use(productsRouter);
 router.use(usersRouter);
 
