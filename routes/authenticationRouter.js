@@ -1,11 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
-import validateUser from './../middleware/validateUser.js';
-import isSingleUser from './../middleware/isSingleUser.js';
-import userExists from './../middleware/userExists.js';
-import validateSignIn from './../middleware/validateSignIn.js';
-import isUserOnline from './../middleware/isUserOnline.js';
+import validateUser from './../middlewares/validateUser.js';
+import isSingleUser from './../middlewares/isSingleUser.js';
+import userExists from './../middlewares/userExists.js';
+import validateSignIn from './../middlewares/validateSignIn.js';
+import isUserOnline from './../middlewares/isUserOnline.js';
 
 import { signUp, signIn } from './../controllers/authenticationController.js';
 
