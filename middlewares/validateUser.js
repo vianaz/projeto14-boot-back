@@ -15,11 +15,9 @@ export default async function validateUser(req, res, next) {
     );
 
     if (validate.error) {
-        console.log(
-        chalk.red(`${ERROR} ${validate.error.details.map((e) => e.message)}`)
-        );
+        console.log(chalk.red(`${ERROR} ${validate.error.details.map((e) => e.message)}`));
         return res.status(422).send({
-            message: "invalid input",
+            message: 'Invalid input',
             details: validate.error.details.map((e) => e.message)
         });
     }
