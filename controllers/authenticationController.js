@@ -46,7 +46,7 @@ export async function signIn(_req, res) {
             token: token,
             last_login: null,
         });
-        console.log(chalk.blue(`${DB_INFO} user ${chalk.bold(email)} logged in`));
+        console.log(chalk.blue(`${DB_INFO} User ${chalk.bold(email)} logged in`));
         res.send({
             name: user.name,
             email: user.email,
