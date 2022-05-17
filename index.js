@@ -14,7 +14,7 @@ app.use(json()); // middleware
 app.use(cors()); // middleware
 app.use(router);
 
-const port = process.env.PORT || 5000; // establishing the port -> production or development
+const port = process.env.PORT /* || 5000 */; // establishing the port -> production or development
 
 app.get('/', (_req, res) => {
 	res.send('Online');
