@@ -23,7 +23,7 @@ export default async function requireToken(req, res, next) {
         console.log(chalk.red(`${ERROR} ${error}`));
         return res.status(500).send({
             message: 'Internal error while getting transactions',
-            detail: error,
+            detail: `${error}`
         });
     }
 

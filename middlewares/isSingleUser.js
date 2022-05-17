@@ -21,7 +21,7 @@ export default async function isSingleUser(req, res, next) {
         console.log(chalk.bold.red(error));
         res.status(500).send({
             message: 'Internal error creating user',
-            detail: error
+            detail: `${error}`
         });
     }
 

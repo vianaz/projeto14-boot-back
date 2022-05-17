@@ -16,7 +16,7 @@ export async function getProducts(_req, res) {
 		console.log(chalk.red(`${ERROR} ${error}`));
 		res.status(500).send({
 			message: 'Internal error while getting users',
-			detail: error
+			detail: `${error}`
 		});
 	}
 }
@@ -36,7 +36,7 @@ export async function purchase(_req, res) {
 				console.log(chalk.red(`${ERROR} ${error}`));
 				res.status(500).send({
 					message: 'Internal error while updating products',
-					detail: error
+					detail: `${error}`
 				});
 			}
 		}
@@ -51,7 +51,7 @@ export async function purchase(_req, res) {
 		console.log(chalk.red(`${ERROR} ${error}`));
 		res.status(500).send({
 			message: 'Internal error while getting cart',
-			detail: error
+			detail: `${error}`
 		});
 	}
 }
@@ -74,7 +74,7 @@ export async function userOnline(_req, res) {
 		console.log(chalk.red(`${ERROR} ${error}`));
 		res.status(500).send({
 			message: 'Internal error in database',
-			detail: error
+			detail: `${error}`
 		});
 	}
 

@@ -19,7 +19,7 @@ export async function getAll(_req, res) {
         console.log(chalk.red(`${ERROR} ${error}`));
         res.status(500).send({
             message: 'Internal error while getting users',
-            detail: error,
+            detail: `${error}`
         });
     }
 }
@@ -35,7 +35,7 @@ export async function getCart(_req, res) {
         console.log(chalk.red(`${ERROR} ${error}`));
         return res.status(500).send({
             message: "Internal error while getting balance",
-            detail: error,
+            detail: `${error}`
         });
     }
 }
@@ -59,7 +59,7 @@ export async function signOut(_req, res) {
         console.log(chalk.red(`${ERROR} ${error}`));
         return res.status(500).send({
             message: 'Internal error while signing off user',
-            detail: error,
+            detail: `${error}`
         });
     }
 }

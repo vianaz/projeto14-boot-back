@@ -20,7 +20,7 @@ export default async function isUserOnline(_req, res, next) {
         console.log(chalk.red(`${ERROR} ${error}`));
         res.status(500).send({
             message: 'Internal error while logging in user',
-            detail: error
+            detail: `${error}`
         });
     }
 
