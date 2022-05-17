@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { stripHtml } from 'string-strip-html';
 
 import { ERROR } from '../models/blueprints/chalk.js';
-import database from '../server/mongoClient.js';
+import database from '../server/MongoClient.js';
 
 export default async function isSingleUser(req, res, next) {
 

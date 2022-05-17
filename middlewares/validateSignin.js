@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 import { ERROR } from '../models/blueprints/chalk.js';
 
-export default async function validateSignIn(req, res, next) {
+export default async function validateSignin(req, res, next) {
 
     const user = res.locals.user;
 

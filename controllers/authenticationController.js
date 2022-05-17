@@ -5,7 +5,7 @@ import { stripHtml } from 'string-strip-html';
 import dotenv from 'dotenv';
 
 import { ERROR, DB_INFO } from '../models/blueprints/chalk.js';
-import database from '../server/mongoClient.js';
+import database from '../server/MongoClient.js';
 
 dotenv.config();
 

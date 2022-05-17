@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
 import { ERROR } from '../models/blueprints/chalk.js';
-import database from '../server/mongoClient.js';
+import database from '../server/MongoClient.js';
 
 export default async function isUserOnline(_req, res, next) {
 

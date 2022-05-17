@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-import database from './../server/mongoClient.js';
+import database from '../server/MongoClient.js';
 import { ERROR } from './../models/blueprints/chalk.js';
 
 export default async function requireToken(req, res, next) {
