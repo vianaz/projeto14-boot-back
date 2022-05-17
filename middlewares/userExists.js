@@ -23,7 +23,7 @@ try {
         console.log(chalk.bold.red(error));
         res.status(500).send({
             message: 'Internal error whilte listing user',
-            detail: error,
+            detail: error
         });
     }
 

@@ -58,10 +58,10 @@ export async function purchase(_req, res) {
 
 export async function userOnline(_req, res) {
 
-	const { data } = res.locals;
+	const { user } = res.locals;
 
 	try {
-		const session = await database.collection('sessions').findOne({ _id: new ObjectId(data.session_id) });
+		const session = await database.collection('sessions').findOne({ _id: new ObjectId(user.session_id) });
 
 		if (!session || !session.active) {
 			console.log(chalk.red(`${ERROR} Invalid token`));

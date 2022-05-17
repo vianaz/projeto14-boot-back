@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.use(authenticationRouter); // signin, signup
 /* router.use(sessionsRouter); */
-router.use(usersRouter);
+router.use(usersRouter); // adm commands
 
 export default router;
