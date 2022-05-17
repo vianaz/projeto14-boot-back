@@ -6,6 +6,8 @@ import { ERROR, DB_INFO } from '../models/blueprints/chalk.js';
 
 dotenv.config();
 
+// [Linux] before, on terminal -> sudo systemctl start mongod
+
 let database = null;
 
 const mongoClient = new MongoClient(process.env.MONGO_URI, {
