@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import chalk from 'chalk';
 
-import database from "../server/MongoClient";
+import database from "../server/MongoClient.js";
 import { ERROR } from '../models/blueprints/chalk.js';
 
 export default async function itemsExists(_req, res, next) {

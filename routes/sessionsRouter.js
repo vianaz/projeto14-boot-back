@@ -11,10 +11,10 @@ import {getProducts, userOnline, purchase} from './../controllers/sessionsContro
 
 dotenv.config();
 
-const usersRouter = express.Router();
+const sessionsRouter = express.Router();
 
-usersRouter.get(process.env.GET_PRODUCTS, getProducts);
-usersRouter.get(process.env.GET_USER, requireToken, userOnline);
-usersRouter.post(process.env.PURCHASE, requireToken, validatePurchase, isUserOnline, userExists, itemsExists, haveStock, purchase);
+sessionsRouter.get(process.env.GET_PRODUCTS, getProducts);
+sessionsRouter.get(process.env.GET_USER, requireToken, userOnline);
+sessionsRouter.post(process.env.PURCHASE, requireToken, validatePurchase, isUserOnline, userExists, itemsExists, haveStock, purchase);
 
 export default sessionsRouter;
