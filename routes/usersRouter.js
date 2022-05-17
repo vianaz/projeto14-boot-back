@@ -10,6 +10,6 @@ const usersRouter = express.Router();
 
 usersRouter.get(process.env.GET_USERS, requireToken, getAll);
 usersRouter.get(process.env.GET_CART, requireToken, getCart);
-usersRouter.post(process.env.SIGNOFF, requireToken, signOut);
+usersRouter.post(process.env.SIGNOUT, requireToken, signOut);
 
 export default usersRouter;

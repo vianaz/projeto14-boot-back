@@ -5,7 +5,8 @@ import { ERROR } from './../models/blueprints/chalk.js';
 
 export default async function requireToken(req, res, next) {
 
-    const token = req.header('Authorization')?.slice(7);
+    const { authorization } = req.headers;
+    const token = authorization?.replace('Bearer ', '').trim();
 
     try {
         const tokenUser = await database.collection('sessions').findOne({ token: token });
